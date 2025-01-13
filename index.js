@@ -38,15 +38,15 @@ app.delete('/getUser-Details/:id',async(req,res)=>{
 }
 })
 
-// app.get('/updategetUser-Details/:id',async(req,res)=>{
-//   let result= await user.findOne({_id:req.params.id});
-//     if(result){
-//       res.send(result)
-//     }else{
-//       res.send({result:'No record found'})
-//   }
-//   res.send(result)
-// });
+app.get('/updategetUser-Details/:id',async(req,res)=>{
+  let result= await user.findOne({_id:req.params.id});
+    if(result){
+      res.send(result)
+    }else{
+      res.send({result:'No record found'})
+  }
+  res.send(result)
+});
 
 app.put('/updategetUser-Details/:id',async(req,res)=>{
   let result= await user.updateOne({_id:req.params.id},

@@ -39,7 +39,7 @@ app.delete('/getUser-Details/:id',async(req,res)=>{
 })
 
 app.put('/updategetUser-Details/:id',async(req,res)=>{
-  let result= await user.updateOne({_id:req.params.id},
+  let result= await user.findOne({_id:req.params.id},
   {
       $set:req.body
   }
@@ -47,6 +47,16 @@ app.put('/updategetUser-Details/:id',async(req,res)=>{
   )
   res.send(result)
 });
+
+app.get('/search/:key',async(req,res)=>{
+  let result=await user.find({
+   "$or":[
+       {Fname:{$regex:req.params.key}}
+       
+   ]
+  });
+  res.send(result)
+})
 
 const PORT = 8000;
 app.listen(PORT, () => {
